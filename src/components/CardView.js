@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { useContext } from 'react';
-import CoronaContext from '../context/corona/coronaContext';
-import Card from './Card';
-import Spinner from './Spinner';
-import { useEffect } from 'react';
+import React, { Fragment } from "react";
+import { useContext } from "react";
+import CoronaContext from "../context/corona/coronaContext";
+import Card from "./Card";
+import Spinner from "./Spinner";
+import { useEffect } from "react";
 
 const CardView = () => {
   const coronaContext = useContext(CoronaContext);
@@ -11,7 +11,6 @@ const CardView = () => {
   useEffect(() => {
     getStats();
     getHelp();
-
     // eslint-disable-next-line
   }, []);
 

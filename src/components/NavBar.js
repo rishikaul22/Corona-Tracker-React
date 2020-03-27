@@ -1,10 +1,16 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import CoronaContext from '../context/corona/coronaContext';
-import Spinner from './Spinner';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useContext, useEffect } from "react";
+import CoronaContext from "../context/corona/coronaContext";
+import Spinner from "./Spinner";
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   const coronaContext = useContext(CoronaContext);
-  const { data, getStats, loading } = coronaContext;
+  const { data, getStats, getHelp, loading } = coronaContext;
+  useEffect(() => {
+    getStats();
+    getHelp();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Fragment>
@@ -12,10 +18,10 @@ const NavBar = () => {
         <div
           className='nav-wrapper'
           style={{
-            backgroundImage: 'linear-gradient(19deg,#0067a1,#303f9f)'
+            backgroundImage: "linear-gradient(19deg,#0067a1,#303f9f)"
           }}
         >
-          <div className='brand-logo center' style={{ fontSize: '40px' }}>
+          <div className='brand-logo center' style={{ fontSize: "40px" }}>
             Corona-Tracker
           </div>
           <a href='#' data-target='mobile-demo' className='sidenav-trigger'>

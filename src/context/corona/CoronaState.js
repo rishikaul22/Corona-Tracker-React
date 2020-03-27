@@ -1,13 +1,14 @@
-import React, { useReducer } from 'react';
-import axios from 'axios';
-import CoronaContext from './coronaContext';
-import CoronaReducer from './coronaReducer';
-import { GET_STATS, SET_LOADING, GET_HELPLINE } from '../types';
+import React, { useReducer } from "react";
+import axios from "axios";
+import CoronaContext from "./coronaContext";
+import CoronaReducer from "./coronaReducer";
+import { GET_STATS, SET_LOADING, GET_HELPLINE } from "../types";
 
 const CoronaState = props => {
   const initialState = {
     data: {},
     statewise: [],
+    help: [],
     loading: false
   };
 
@@ -17,7 +18,7 @@ const CoronaState = props => {
     setLoading();
 
     const res = await axios.get(
-      'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise'
+      "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise"
     );
     //console.log(state.loading);
     //console.log(res.data);
@@ -30,7 +31,7 @@ const CoronaState = props => {
   const getHelp = async () => {
     setLoading();
 
-    const res = await axios.get('https://api.rootnet.in/covid19-in/contacts');
+    const res = await axios.get("https://api.rootnet.in/covid19-in/contacts");
 
     dispatch({
       type: GET_HELPLINE,
@@ -47,6 +48,7 @@ const CoronaState = props => {
         data: state.data,
         statewise: state.statewise,
         loading: state.loading,
+        help: state.help,
         getStats,
         getHelp,
         setLoading

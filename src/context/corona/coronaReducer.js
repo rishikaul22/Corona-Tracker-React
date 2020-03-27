@@ -1,4 +1,4 @@
-import { GET_STATS, SET_LOADING, GET_HELPLINE } from '../types.js';
+import { GET_STATS, SET_LOADING, GET_HELPLINE } from "../types.js";
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,12 +7,13 @@ export default (state, action) => {
       return {
         ...state,
         data: action.payload.data.total,
+        statewise: action.payload.data.statewise,
         loading: false
       };
     case GET_HELPLINE:
       return {
         ...state,
-        data: action.payload.data.contacts,
+        help: action.payload.data.contacts,
         loading: false
       };
 
