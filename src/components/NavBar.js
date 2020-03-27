@@ -1,7 +1,7 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import CoronaContext from "../context/corona/coronaContext";
-import Spinner from "./Spinner";
-import { Link } from "react-router-dom";
+import React, { Fragment, useContext, useEffect } from 'react';
+import CoronaContext from '../context/corona/coronaContext';
+import Spinner from './Spinner';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const coronaContext = useContext(CoronaContext);
@@ -18,16 +18,15 @@ const NavBar = () => {
         <div
           className='nav-wrapper'
           style={{
-            backgroundImage: "linear-gradient(19deg,#0067a1,#303f9f)"
+            backgroundImage: 'linear-gradient(19deg,#0067a1,#303f9f)'
           }}
         >
-          <div className='brand-logo center' style={{ fontSize: "40px" }}>
-            Corona-Tracker
+          <div className='brand-logo left'>
+            <i class='large material-icons'>place</i>
+            <strong>Corona-Tracker</strong>
           </div>
-          <a href='#' data-target='mobile-demo' className='sidenav-trigger'>
-            <i className='material-icons'>menu</i>
-          </a>
-          <ul className='right hide-on-med-and-down'>
+
+          <ul className='right'>
             <li>
               <Link to='/'>Home</Link>
             </li>
@@ -37,18 +36,6 @@ const NavBar = () => {
           </ul>
         </div>
       </nav>
-
-      <ul className='sidenav' id='mobile-demo'>
-        <li>
-          <a href='sass.html'>Sass</a>
-        </li>
-        <li>
-          <a href='badges.html'>Components</a>
-        </li>
-        <li>
-          <a href='collapsible.html'>Javascript</a>
-        </li>
-      </ul>
     </Fragment>
   );
 };
