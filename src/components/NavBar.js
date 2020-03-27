@@ -1,44 +1,38 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import CoronaContext from '../context/corona/coronaContext';
 import Spinner from './Spinner';
+import { Link } from 'react-router-dom';
 const NavBar = () => {
   const coronaContext = useContext(CoronaContext);
   const { data, getStats, loading } = coronaContext;
 
-  useEffect(() => {
-    getStats();
-
-    // eslint-disable-next-line
-  }, []);
-  console.log();
-  console.log();
-
   return (
     <Fragment>
       <nav>
-        <div class='nav-wrapper'>
-          <div class='brand-logo'>Logo</div>
-          <a href='#' data-target='mobile-demo' class='sidenav-trigger'>
-            <i class='material-icons'>menu</i>
+        <div
+          className='nav-wrapper'
+          style={{
+            backgroundImage: 'linear-gradient(19deg,#0067a1,#303f9f)'
+          }}
+        >
+          <div className='brand-logo center' style={{ fontSize: '40px' }}>
+            Corona-Tracker
+          </div>
+          <a href='#' data-target='mobile-demo' className='sidenav-trigger'>
+            <i className='material-icons'>menu</i>
           </a>
-          <ul class='right hide-on-med-and-down'>
+          <ul className='right hide-on-med-and-down'>
             <li>
-              <a href='sass.html'>SAss</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a href='badges.html'>Components</a>
-            </li>
-            <li>
-              <a href='collapsible.html'>Javascript</a>
-            </li>
-            <li>
-              <a href='mobile.html'>Mobile</a>
+              <Link to='/helpline'>Helpline</Link>
             </li>
           </ul>
         </div>
       </nav>
 
-      <ul class='sidenav' id='mobile-demo'>
+      <ul className='sidenav' id='mobile-demo'>
         <li>
           <a href='sass.html'>Sass</a>
         </li>
@@ -47,9 +41,6 @@ const NavBar = () => {
         </li>
         <li>
           <a href='collapsible.html'>Javascript</a>
-        </li>
-        <li>
-          <a href='mobile.html'>Mobile</a>
         </li>
       </ul>
     </Fragment>
