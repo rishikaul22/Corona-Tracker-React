@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
+import Card from './components/Card';
+import NavBar from './components/NavBar';
+import CoronaState from './context/corona/CoronaState';
+import CoronaContext from './context/corona/coronaContext';
 
-function App() {
+const App = () => {
+  // const coronaContext = useContext(CoronaContext);
+  // const { total, getStats } = coronaContext;
+  // const { confirmed, recovered, deaths, active } = total;
+  // useEffect(() => {
+  //   getStats();
+  //   // eslint-disable-next-line
+  // }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CoronaState>
+      <div className='App'>
+        <NavBar />
+        {/* <Card title='Total Cases' value={confirmed} />
+        <Card title='Recovered' value={recovered} />
+        <Card title='Deaths' value={deaths} />
+        <Card title='Active' value={active} /> */}
+      </div>
+    </CoronaState>
   );
-}
+};
 
 export default App;
