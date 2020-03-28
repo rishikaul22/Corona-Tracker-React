@@ -4,13 +4,13 @@ import Spinner from './Spinner';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const coronaContext = useContext(CoronaContext);
-  const { data, getStats, getHelp, loading } = coronaContext;
-  useEffect(() => {
-    getStats();
-    getHelp();
-    // eslint-disable-next-line
-  }, []);
+  // const coronaContext = useContext(CoronaContext);
+  // const { data, getStats, getHelp, loading } = coronaContext;
+  // useEffect(() => {
+  //   getStats();
+  //   getHelp();
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <Fragment>
@@ -22,7 +22,7 @@ const NavBar = () => {
           }}
         >
           <div className='brand-logo left'>
-            <i class='large material-icons'>place</i>
+            <i className='large material-icons'>place</i>
             <strong>Corona-Tracker</strong>
           </div>
 

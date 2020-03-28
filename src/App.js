@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Helpline from './pages/Helpline';
+import { useSpring, animated } from 'react-spring';
 
 const App = () => {
   // const coronaContext = useContext(CoronaContext);
@@ -18,10 +19,21 @@ const App = () => {
   //   getStats();
   //   // eslint-disable-next-line
   // }, []);
+  const fade = useSpring({
+    config: {
+      duration: 1000
+    },
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    }
+  });
   return (
     <CoronaState>
       <Router>
-        <div className='App'>
+        <animated.div className='App' style={fade}>
           <NavBar />
           <Switch>
             <Route exact path='/' component={Home} />
@@ -33,7 +45,7 @@ const App = () => {
         <Card title='Active' value={active} /> */}
 
           <Footer />
-        </div>
+        </animated.div>
       </Router>
     </CoronaState>
   );

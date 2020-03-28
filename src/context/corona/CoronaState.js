@@ -15,8 +15,6 @@ const CoronaState = props => {
   const [state, dispatch] = useReducer(CoronaReducer, initialState);
 
   const getStats = async () => {
-    setLoading();
-
     const res = await axios.get(
       'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise'
     );
@@ -29,15 +27,12 @@ const CoronaState = props => {
   };
 
   const getHelp = async () => {
-    setLoading();
-
     const res = await axios.get('https://api.rootnet.in/covid19-in/contacts');
 
     dispatch({
       type: GET_HELPLINE,
       payload: res.data
     });
-    console.log(res.data);
   };
 
   const setLoading = () => dispatch({ type: SET_LOADING });

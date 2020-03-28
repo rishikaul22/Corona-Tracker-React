@@ -7,14 +7,16 @@ import { useEffect } from 'react';
 
 const CardView = () => {
   const coronaContext = useContext(CoronaContext);
-  const { data, getStats, loading, getHelp } = coronaContext;
+  const { data, getStats, loading, getHelp, setLoading } = coronaContext;
   useEffect(() => {
+    setLoading();
     getStats();
     getHelp();
+
     // eslint-disable-next-line
   }, []);
 
-  const { confirmed, recovered, deaths, active } = data;
+  const { confirmed = 0, recovered = 0, deaths = 0, active = 0 } = data;
 
   if (loading) return <Spinner />;
 

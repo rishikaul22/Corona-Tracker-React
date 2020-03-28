@@ -41,8 +41,9 @@ export default function CustomizedTables() {
 
   const coronaContext = useContext(CoronaContext);
 
-  const { getHelp, help, loading } = coronaContext;
+  const { getHelp, help, loading, setLoading } = coronaContext;
   useEffect(() => {
+    setLoading();
     getHelp();
     // eslint-disable-next-line
   }, []);
