@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CoronaContext from "../context/corona/coronaContext";
+import Graph from "../components/Graph";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -42,18 +43,18 @@ const Home = () => {
   const coronaContext = useContext(CoronaContext);
 
   const { statewise } = coronaContext;
-  
+
   const statewisesort = statewise
     .sort(function(a, b) {
       return a.confirmed - b.confirmed;
     })
     .reverse();
-
   return (
     <Fragment>
       <h3 className='black-text center'>COVID-19 Statistics(INDIA)</h3>
       <hr></hr>
       <CardView />
+      <Graph />
       <TableContainer component={Paper}>
         <Table
           className={classes.table}
