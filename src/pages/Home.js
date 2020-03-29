@@ -42,6 +42,12 @@ const Home = () => {
   const coronaContext = useContext(CoronaContext);
 
   const { statewise } = coronaContext;
+  
+  const statewisesort = statewise
+    .sort(function(a, b) {
+      return a.confirmed - b.confirmed;
+    })
+    .reverse();
 
   return (
     <Fragment>
@@ -64,7 +70,7 @@ const Home = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {statewise.map(row => (
+            {statewisesort.map(row => (
               <StyledTableRow key={row.state}>
                 <StyledTableCell component='th' scope='row'>
                   {row.state}
