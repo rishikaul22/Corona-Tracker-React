@@ -3,9 +3,10 @@ import { useContext } from 'react';
 import CoronaContext from '../context/corona/coronaContext';
 import Card from './Card';
 import Spinner from './Spinner';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const CardView = () => {
+  const [live, setLive] = useState(true);
   const coronaContext = useContext(CoronaContext);
   const { data, getStats, loading, getHelp, setLoading } = coronaContext;
   useEffect(() => {
@@ -23,6 +24,9 @@ const CardView = () => {
   return (
     <Fragment>
       <div className='row'>
+        <p className='green-text center'>
+          <strong>LIVE</strong>
+        </p>
         <div className='col s12 m12 l6 xl6'>
           <Card
             title='Total Cases'
