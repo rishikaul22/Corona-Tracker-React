@@ -37,7 +37,7 @@ const Graph = () => {
   }
 
   return (
-    <div align='center'>
+    <div align='center' style={{ width: "auto", height: "auto" }}>
       <LineChart
         width={600}
         height={300}
