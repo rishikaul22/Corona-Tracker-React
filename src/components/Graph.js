@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 import {
   LineChart,
   Line,
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip
-} from "recharts";
-import CoronaContext from "../context/corona/coronaContext";
-import Spinner from "./Spinner";
+  Tooltip,
+  ResponsiveContainer
+} from 'recharts';
+import CoronaContext from '../context/corona/coronaContext';
+import Spinner from './Spinner';
 
 const Graph = () => {
   let data = [];
@@ -37,22 +38,24 @@ const Graph = () => {
   }
 
   return (
-    <div align='center'>
-      <LineChart
-        width={600}
-        height={300}
-        data={data}
-        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-      >
-        <Line type='monotone' dataKey='Total' stroke='#004e92' />
-        <Line type='monotone' dataKey='Active' stroke='#7b4397' />
-        <Line type='monotone' dataKey='Recovered' stroke='#0f9b0f' />
-        <Line type='monotone' dataKey='Deaths' stroke='#6f0000' />
-        <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
-        <XAxis dataKey='name' />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
+    <div className='row'>
+      <div className='col s12 m12 l12 xl12'>
+        <ResponsiveContainer>
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          >
+            <Line type='monotone' dataKey='Total' stroke='#004e92' />
+            <Line type='monotone' dataKey='Active' stroke='#7b4397' />
+            <Line type='monotone' dataKey='Recovered' stroke='#0f9b0f' />
+            <Line type='monotone' dataKey='Deaths' stroke='#6f0000' />
+            <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
+            <XAxis dataKey='name' />
+            <YAxis />
+            <Tooltip />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };

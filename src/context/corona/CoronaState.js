@@ -17,7 +17,8 @@ const CoronaState = props => {
 
   const getStats = async () => {
     const res = await axios.get(
-      "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise"
+      // "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise"
+      "https://api.covid19india.org/data.json"
     );
     //console.log(state.loading);
     //console.log(res.data);

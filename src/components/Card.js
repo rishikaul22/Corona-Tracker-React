@@ -20,7 +20,7 @@ const Card = ({ title, value, color1, color2, degrees }) => {
     from: {
       number: 0
     },
-    number: value
+    number: Number(value)
   });
 
   return (
@@ -38,6 +38,7 @@ const Card = ({ title, value, color1, color2, degrees }) => {
               <animated.strong>
                 {increment.number.interpolate(x => Math.floor(x))}
               </animated.strong>
+              {/* {value} */}
             </span>
           </div>
         </div>

@@ -8,10 +8,11 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case GET_STATS:
+      // console.log(action.payload)
       return {
         ...state,
-        data: action.payload.data.total,
-        statewise: action.payload.data.statewise,
+        data: action.payload.statewise[0],
+        statewise: action.payload.statewise,
         loading: false
       };
     case GET_HELPLINE:

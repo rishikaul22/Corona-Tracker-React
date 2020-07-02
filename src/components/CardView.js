@@ -18,14 +18,14 @@ const CardView = () => {
   }, []);
 
   const { confirmed = 0, recovered = 0, deaths = 0, active = 0 } = data;
-
+  console.log(confirmed, recovered, active, deaths)
   if (loading) return <Spinner />;
 
   return (
     <Fragment>
       <div className='row'>
         <p className='green-text center'>
-          <strong>LIVE</strong>
+          <strong>•LIVE•</strong>
         </p>
         <div className='col s12 m12 l6 xl6'>
           <Card
