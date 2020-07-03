@@ -8,7 +8,7 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case GET_STATS:
-      // console.log(action.payload)
+      console.log(action.payload)
       return {
         ...state,
         data: action.payload.statewise[0],

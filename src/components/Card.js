@@ -1,7 +1,15 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
+var numberToWords = require('number-to-words');
+
+
+
 
 const Card = ({ title, value, color1, color2, degrees }) => {
+  const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
   const fade = useSpring({
     config: {
       duration: 500
@@ -40,6 +48,7 @@ const Card = ({ title, value, color1, color2, degrees }) => {
               </animated.strong>
               {/* {value} */}
             </span>
+            <p className='lead'>{capitalize(numberToWords.toWords(value))}</p>
           </div>
         </div>
       </div>

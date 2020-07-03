@@ -4,7 +4,7 @@ import CoronaContext from '../context/corona/coronaContext';
 import Card from './Card';
 import Spinner from './Spinner';
 import { useEffect, useState } from 'react';
-
+var numberToWords = require('number-to-words');
 const CardView = () => {
   const [live, setLive] = useState(true);
   const coronaContext = useContext(CoronaContext);
@@ -17,15 +17,17 @@ const CardView = () => {
     // eslint-disable-next-line
   }, []);
 
-  const { confirmed = 0, recovered = 0, deaths = 0, active = 0 } = data;
+  const { confirmed = 0, recovered = 0, deaths = 0, active = 0, lastupdatedtime } = data;
   console.log(confirmed, recovered, active, deaths)
   if (loading) return <Spinner />;
-
+  const [lastdate, lasttime] = lastupdatedtime.split(' ')
+  const [day, month, year] = lastdate.split('/')
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return (
     <Fragment>
       <div className='row'>
-        <p className='green-text center'>
-          <strong>•LIVE•</strong>
+        <p className='text center'>
+          <strong>Last updated on {numberToWords.toOrdinal(day)} {months[Number(month) - 1]}  at {lasttime.substring(0, 5)} hrs</strong>
         </p>
         <div className='col s12 m12 l6 xl6'>
           <Card
