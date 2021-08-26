@@ -7,13 +7,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import CoronaContext from "../context/corona/coronaContext";
 
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.type == "dark" ? theme.palette.info.dark : theme.palette.info.dark,
+    backgroundColor: theme.palette.type === "dark" ? theme.palette.info.dark : theme.palette.info.dark,
     color: theme.palette.common.white
   },
   body: {
@@ -42,7 +41,7 @@ const Home = () => {
 
   const coronaContext = useContext(CoronaContext);
 
-  const { statewise, modeDark, setLightMode, setDarkMode } = coronaContext;
+  const { statewise, modeDark } = coronaContext;
 
   const statewisesort = statewise
     .sort(function (a, b) {

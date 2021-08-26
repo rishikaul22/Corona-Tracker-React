@@ -3,10 +3,10 @@ import { useContext } from 'react';
 import CoronaContext from '../context/corona/coronaContext';
 import Card from './Card';
 import Spinner from './Spinner';
-import { useEffect, useState } from 'react';
-var numberToWords = require('number-to-words');
+import { useEffect } from 'react';
+// var numberToWords = require('number-to-words');
 const CardView = () => {
-  const [live, setLive] = useState(true);
+  // const [live, setLive] = useState(true);
   const coronaContext = useContext(CoronaContext);
   const { data, getStats, loading, getHelp, setLoading, modeDark } = coronaContext;
   useEffect(() => {
@@ -17,13 +17,13 @@ const CardView = () => {
     // eslint-disable-next-line
   }, []);
 
-  const { confirmed = 0, recovered = 0, deaths = 0, active = 0, lastupdatedtime } = data;
+  const { confirmed = 0, recovered = 0, deaths = 0, active = 0 } = data;
   console.log(confirmed, recovered, active, deaths)
   if (loading) return <Spinner />;
   // const [lastdate, lasttime] = lastupdatedtime.split(' ')
   // const [day, month, year] = lastdate.split('/')
   console.log(data)
-  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  // var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   return (
     <Fragment>
       <div className='row'>

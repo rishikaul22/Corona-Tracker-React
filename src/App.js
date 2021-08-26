@@ -1,10 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Card from './components/Card';
 import NavBar from './components/NavBar';
 import CoronaState from './context/corona/CoronaState';
-import CoronaContext from './context/corona/coronaContext';
-import CardView from './components/CardView';
+
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';

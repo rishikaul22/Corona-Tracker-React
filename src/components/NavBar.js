@@ -1,5 +1,4 @@
-import { Button } from '@material-ui/core';
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import CoronaContext from '../context/corona/coronaContext';
