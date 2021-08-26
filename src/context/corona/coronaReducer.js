@@ -35,11 +35,15 @@ export default (state, action) => {
         loading: true
       };
     case SET_LIGHT_MODE:
+      localStorage.setItem("modeDark", "false")
+      // document.body.style = 'background: white;';
       return {
         ...state,
         modeDark: false
       }
     case SET_DARK_MODE:
+      localStorage.setItem("modeDark", "true")
+      // document.body.style = 'background: black;';
       return {
         ...state,
         modeDark: true

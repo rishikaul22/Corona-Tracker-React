@@ -11,7 +11,7 @@ const CoronaState = props => {
     help: [],
     history: [],
     loading: true,
-    modeDark: false
+    modeDark: localStorage.getItem("modeDark") === null ? false : localStorage.getItem("modeDark") === "false" ? false : true
   };
 
   const [state, dispatch] = useReducer(CoronaReducer, initialState);
@@ -23,9 +23,11 @@ const CoronaState = props => {
       // "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise"
       // "https://api.covid19india.org/data.json"
       "https://data.covid19india.org/data.json"
+      // "https://data.covid19india.org/v4/min/data.min.json",
+      // "https://data.covid19india.org/v4/min/timeseries.min.json"
     );
     //console.log(state.loading);
-    //console.log(res.data);
+    console.log(res.data);
     dispatch({
       type: GET_STATS,
       payload: res.data
@@ -53,11 +55,9 @@ const CoronaState = props => {
 
   const setLoading = () => dispatch({ type: SET_LOADING });
   const setLightMode = () => {
-    document.body.style = 'background: white;';
     dispatch({ type: SET_LIGHT_MODE })
   }
   const setDarkMode = () => {
-    document.body.style = 'background: black;';
     dispatch({ type: SET_DARK_MODE })
   }
 

@@ -54,8 +54,9 @@ export default function CustomizedTables() {
   useEffect(() => {
     setLoading();
     getHelp();
+    modeDark ? document.body.style = 'background: black;' : document.body.style = 'background: white;';
     // eslint-disable-next-line
-  }, []);
+  }, [modeDark]);
   console.log('help', help);
   console.log('loading', loading);
   const { regional, primary } = help;

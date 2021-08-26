@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import CardView from "../components/CardView";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -52,6 +52,9 @@ const Home = () => {
   const coronaContext = useContext(CoronaContext);
 
   const { statewise, modeDark, setDarkMode, setLightMode } = coronaContext;
+  useEffect(() => {
+    modeDark ? document.body.style = 'background: black;' : document.body.style = 'background: white;';
+  }, [modeDark])
 
 
   const statewisesort = statewise
