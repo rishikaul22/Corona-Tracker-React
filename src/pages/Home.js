@@ -8,7 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CoronaContext from "../context/corona/coronaContext";
-
+import Fab from '@material-ui/core/Fab';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -35,13 +35,24 @@ const useStyles = makeStyles({
     width: "auto"
   }
 });
+const style = {
+  margin: 0,
+  top: 'auto',
+  right: 20,
+  bottom: 20,
+  left: 'auto',
+  position: 'fixed',
+  backgroundColor: 'grey'
+};
+
 
 const Home = () => {
   const classes = useStyles();
 
   const coronaContext = useContext(CoronaContext);
 
-  const { statewise, modeDark } = coronaContext;
+  const { statewise, modeDark, setDarkMode, setLightMode } = coronaContext;
+
 
   const statewisesort = statewise
     .sort(function (a, b) {
@@ -54,6 +65,12 @@ const Home = () => {
       }
 
       <CardView />
+      <Fab disableRipple disableTouchRipple disableFocusRipple style={style} >
+        {
+          !modeDark ? <i className='small material-icons' style={{ cursor: 'pointer' }} onClick={() => { setDarkMode() }}>dark_mode</i>
+            : <i className='small material-icons' style={{ cursor: 'pointer' }} onClick={() => { setLightMode() }}>light_mode</i>
+        }
+      </Fab>
 
       <TableContainer >
         <Table

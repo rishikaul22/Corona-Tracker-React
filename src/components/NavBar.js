@@ -22,12 +22,7 @@ const NavBar = () => {
           </div>
 
           <ul className='right'>
-            <li>
-              {
-                !modeDark ? <i className='large material-icons' style={{ cursor: 'pointer' }} onClick={() => { setDarkMode() }}>dark_mode</i>
-                  : <i className='large material-icons' style={{ cursor: 'pointer' }} onClick={() => { setLightMode() }}>light_mode</i>
-              }
-            </li>
+
             <li>
               <Link to='/'>Home</Link>
             </li>

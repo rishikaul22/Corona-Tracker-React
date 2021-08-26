@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import CoronaContext from '../context/corona/coronaContext';
 import Spinner from '../components/Spinner';
+import { Fab } from '@material-ui/core';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -34,13 +35,22 @@ const useStyles = makeStyles({
     width: "auto"
   }
 });
+const style = {
+  margin: 0,
+  top: 'auto',
+  right: 20,
+  bottom: 20,
+  left: 'auto',
+  position: 'fixed',
+  backgroundColor: 'grey'
+};
 
 export default function CustomizedTables() {
   const classes = useStyles();
 
   const coronaContext = useContext(CoronaContext);
 
-  const { getHelp, help, loading, setLoading, modeDark } = coronaContext;
+  const { getHelp, help, loading, setLoading, modeDark, setDarkMode, setLightMode } = coronaContext;
   useEffect(() => {
     setLoading();
     getHelp();
@@ -70,6 +80,12 @@ export default function CustomizedTables() {
           <p>E-Mail : {primary.email}</p>
         </div>
       }
+      <Fab disableRipple disableTouchRipple disableFocusRipple style={style} >
+        {
+          !modeDark ? <i className='small material-icons' style={{ cursor: 'pointer' }} onClick={() => { setDarkMode() }}>dark_mode</i>
+            : <i className='small material-icons' style={{ cursor: 'pointer' }} onClick={() => { setLightMode() }}>light_mode</i>
+        }
+      </Fab>
       <TableContainer >
         <Table
           className={classes.table}
