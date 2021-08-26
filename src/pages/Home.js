@@ -13,7 +13,7 @@ import CoronaContext from "../context/corona/coronaContext";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.info.dark,
+    backgroundColor: theme.palette.type == "dark" ? theme.palette.info.dark : theme.palette.info.dark,
     color: theme.palette.common.white
   },
   body: {
@@ -24,7 +24,7 @@ const StyledTableCell = withStyles(theme => ({
 const StyledTableRow = withStyles(theme => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.background.default
+      backgroundColor: theme.palette.action.hover
     }
   }
 }))(TableRow);
@@ -42,7 +42,7 @@ const Home = () => {
 
   const coronaContext = useContext(CoronaContext);
 
-  const { statewise } = coronaContext;
+  const { statewise, modeDark, setLightMode, setDarkMode } = coronaContext;
 
   const statewisesort = statewise
     .sort(function (a, b) {
@@ -51,41 +51,43 @@ const Home = () => {
     .reverse();
   return (
     <Fragment>
-      <h3 className='black-text center'>COVID-19 Statistics(INDIA)</h3>
-      <hr></hr>
+      {modeDark ? (<div><h3 className='white-text center'>COVID-19 Statistics(INDIA)</h3> <hr style={{ borderColor: 'black' }}></hr> </div>) : (<div><h3 className='black-text center'>COVID-19 Statistics(INDIA)</h3> <hr></hr> </div>)
+      }
+
       <CardView />
 
-      <TableContainer component={Paper}>
+      <TableContainer >
         <Table
+          style={{ backgroundColor: modeDark ? "#000000" : "" }}
           className={classes.table}
           aria-label='customized table'
           align='center'
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell>State/UT</StyledTableCell>
-              <StyledTableCell align='center'>Confirmed</StyledTableCell>
-              <StyledTableCell align='center'>Active</StyledTableCell>
-              <StyledTableCell align='center'>Recovered</StyledTableCell>
-              <StyledTableCell align='center'>Deaths</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }}>State/UT</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }} align='center'>Confirmed</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }} align='center'>Active</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }} align='center'>Recovered</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }} align='center'>Deaths</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {statewisesort.map(row => (
               <StyledTableRow key={row.state}>
-                <StyledTableCell component='th' scope='row'>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} component='th' scope='row'>
                   {row.state}
                 </StyledTableCell>
-                <StyledTableCell align='right'>{row.confirmed}</StyledTableCell>
-                <StyledTableCell align='right'>{row.active}</StyledTableCell>
-                <StyledTableCell align='right'>{row.recovered}</StyledTableCell>
-                <StyledTableCell align='right'>{row.deaths}</StyledTableCell>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} align='right'>{row.confirmed}</StyledTableCell>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} align='right'>{row.active}</StyledTableCell>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} align='right'>{row.recovered}</StyledTableCell>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} align='right'>{row.deaths}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </Fragment>
+    </Fragment >
   );
 };
 

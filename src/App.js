@@ -13,6 +13,8 @@ import { useSpring, animated } from 'react-spring';
 
 const App = () => {
   // const coronaContext = useContext(CoronaContext);
+  // const { modeDark, setDarkMode, setLightMode } = coronaContext;
+  // const coronaContext = useContext(CoronaContext);
   // const { total, getStats } = coronaContext;
   // const { confirmed, recovered, deaths, active } = total;
   // useEffect(() => {
@@ -33,7 +35,8 @@ const App = () => {
   return (
     <CoronaState>
       <Router>
-        <animated.div className='App' style={fade}>
+        <animated.div className='App' style={fade} >
+
           <NavBar />
           <Switch>
             <Route exact path='/' component={Home} />

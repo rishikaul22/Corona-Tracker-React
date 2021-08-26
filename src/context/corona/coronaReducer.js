@@ -2,7 +2,9 @@ import {
   GET_STATS,
   SET_LOADING,
   GET_HELPLINE,
-  GET_DAILY_DATA
+  GET_DAILY_DATA,
+  SET_DARK_MODE,
+  SET_LIGHT_MODE
 } from "../types.js";
 
 export default (state, action) => {
@@ -32,6 +34,16 @@ export default (state, action) => {
         ...state,
         loading: true
       };
+    case SET_LIGHT_MODE:
+      return {
+        ...state,
+        modeDark: false
+      }
+    case SET_DARK_MODE:
+      return {
+        ...state,
+        modeDark: true
+      }
     default:
       return {
         state

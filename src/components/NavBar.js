@@ -1,24 +1,20 @@
+import { Button } from '@material-ui/core';
 import React, { Fragment, useContext, useEffect } from 'react';
-import CoronaContext from '../context/corona/coronaContext';
-import Spinner from './Spinner';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
-  // const coronaContext = useContext(CoronaContext);
-  // const { data, getStats, getHelp, loading } = coronaContext;
-  // useEffect(() => {
-  //   getStats();
-  //   getHelp();
-  //   // eslint-disable-next-line
-  // }, []);
+import CoronaContext from '../context/corona/coronaContext';
 
+
+const NavBar = () => {
+  const coronaContext = useContext(CoronaContext);
+  const { modeDark, setDarkMode, setLightMode } = coronaContext;
   return (
     <Fragment>
       <nav>
         <div
           className='nav-wrapper'
           style={{
-            backgroundImage: 'linear-gradient(19deg,#0067a1,#303f9f)'
+            backgroundImage: !modeDark ? 'linear-gradient(19deg,#0067a1,#303f9f)' : 'linear-gradient(19deg,#101010,#101010)'
           }}
         >
           <div className='brand-logo left'>
@@ -27,6 +23,12 @@ const NavBar = () => {
           </div>
 
           <ul className='right'>
+            <li>
+              {
+                !modeDark ? <i className='large material-icons' style={{ cursor: 'pointer' }} onClick={() => { setDarkMode() }}>dark_mode</i>
+                  : <i className='large material-icons' style={{ cursor: 'pointer' }} onClick={() => { setLightMode() }}>light_mode</i>
+              }
+            </li>
             <li>
               <Link to='/'>Home</Link>
             </li>

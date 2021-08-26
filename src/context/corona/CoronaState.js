@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import CoronaContext from "./coronaContext";
 import CoronaReducer from "./coronaReducer";
-import { GET_STATS, SET_LOADING, GET_HELPLINE, GET_DAILY_DATA } from "../types";
+import { GET_STATS, SET_LOADING, GET_HELPLINE, GET_DAILY_DATA, SET_LIGHT_MODE, SET_DARK_MODE } from "../types";
 
 const CoronaState = props => {
   const initialState = {
@@ -10,10 +10,12 @@ const CoronaState = props => {
     statewise: [],
     help: [],
     history: [],
-    loading: true
+    loading: true,
+    modeDark: false
   };
 
   const [state, dispatch] = useReducer(CoronaReducer, initialState);
+
 
   // USUAL API CHANGE
   const getStats = async () => {
@@ -50,6 +52,14 @@ const CoronaState = props => {
   };
 
   const setLoading = () => dispatch({ type: SET_LOADING });
+  const setLightMode = () => {
+    document.body.style = 'background: white;';
+    dispatch({ type: SET_LIGHT_MODE })
+  }
+  const setDarkMode = () => {
+    document.body.style = 'background: black;';
+    dispatch({ type: SET_DARK_MODE })
+  }
 
   return (
     <CoronaContext.Provider
@@ -59,10 +69,13 @@ const CoronaState = props => {
         loading: state.loading,
         help: state.help,
         history: state.history,
+        modeDark: state.modeDark,
         getStats,
         getHelp,
         getDailyData,
-        setLoading
+        setLoading,
+        setLightMode,
+        setDarkMode
       }}
     >
       {props.children}

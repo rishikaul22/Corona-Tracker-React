@@ -41,7 +41,7 @@ export default function CustomizedTables() {
 
   const coronaContext = useContext(CoronaContext);
 
-  const { getHelp, help, loading, setLoading } = coronaContext;
+  const { getHelp, help, loading, setLoading, modeDark } = coronaContext;
   useEffect(() => {
     setLoading();
     getHelp();
@@ -57,13 +57,21 @@ export default function CustomizedTables() {
 
   return (
     <div>
-      <div align='center'>
-        <h5>Ministry of Health & Welfare</h5>
-        <p>Number : {primary.number}</p>
-        <p>Toll-Free : 1075</p>
-        <p>E-Mail : {primary.email}</p>
-      </div>
-      <TableContainer component={Paper}>
+      {modeDark ?
+        <div className='white-text' align='center'>
+          <h5>Ministry of Health & Welfare</h5>
+          <p>Number : {primary.number}</p>
+          <p>Toll-Free : 1075</p>
+          <p>E-Mail : {primary.email}</p>
+        </div> :
+        <div align='center'>
+          <h5>Ministry of Health & Welfare</h5>
+          <p>Number : {primary.number}</p>
+          <p>Toll-Free : 1075</p>
+          <p>E-Mail : {primary.email}</p>
+        </div>
+      }
+      <TableContainer >
         <Table
           className={classes.table}
           aria-label='customized table'
@@ -71,17 +79,17 @@ export default function CustomizedTables() {
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell>State/UT</StyledTableCell>
-              <StyledTableCell align='center'>Number</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }}>State/UT</StyledTableCell>
+              <StyledTableCell style={{ backgroundColor: modeDark ? "#000000" : "" }} align='center'>Number</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {regional.map(row => (
               <StyledTableRow key={row.loc}>
-                <StyledTableCell component='th' scope='row'>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} component='th' scope='row'>
                   {row.loc}
                 </StyledTableCell>
-                <StyledTableCell align='right'>{row.number}</StyledTableCell>
+                <StyledTableCell style={{ backgroundColor: modeDark ? "#303030" : "", color: modeDark ? "#ffffff" : "#000000" }} align='right'>{row.number}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

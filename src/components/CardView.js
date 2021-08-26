@@ -8,7 +8,7 @@ var numberToWords = require('number-to-words');
 const CardView = () => {
   const [live, setLive] = useState(true);
   const coronaContext = useContext(CoronaContext);
-  const { data, getStats, loading, getHelp, setLoading } = coronaContext;
+  const { data, getStats, loading, getHelp, setLoading, modeDark } = coronaContext;
   useEffect(() => {
     setLoading();
     getStats();
@@ -30,8 +30,9 @@ const CardView = () => {
         <p className='text center'>
           {/* <strong>Last updated on {numberToWords.toOrdinal(day)} {months[Number(month) - 1]}  at {lasttime.substring(0, 5)} hrs</strong> */}
         </p>
-        <div className='col s12 m12 l6 xl6'>
+        <div className='col s12 m12 l6 xl6' style={{ filter: modeDark ? 'brightness(0.8)' : 'brightness(1)' }}>
           <Card
+
             title='Total Cases'
             value={confirmed}
             color1='#0f0c29'
@@ -40,7 +41,7 @@ const CardView = () => {
           />
         </div>
 
-        <div className='col s12 m12 l6 xl6'>
+        <div className='col s12 m12 l6 xl6' style={{ filter: modeDark ? 'brightness(0.8)' : 'brightness(1)' }}>
           <Card
             title='Active Cases'
             value={active}
@@ -49,7 +50,7 @@ const CardView = () => {
             degrees='287'
           />
         </div>
-        <div className='col s12 m12 l6 xl6'>
+        <div className='col s12 m12 l6 xl6' style={{ filter: modeDark ? 'brightness(0.8)' : 'brightness(1)' }}>
           <Card
             title='Discharged'
             value={recovered}
@@ -58,7 +59,7 @@ const CardView = () => {
             degrees='90'
           />
         </div>
-        <div className='col s12 m12 l6 xl6'>
+        <div className='col s12 m12 l6 xl6' style={{ filter: modeDark ? 'brightness(0.8)' : 'brightness(1)' }}>
           <Card
             title='Deceased'
             value={deaths}
